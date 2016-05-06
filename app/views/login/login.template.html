@@ -1,0 +1,15 @@
+<div class="container-fluid" style="max-width: 330px;">
+    <form ng-submit="lc.login()">
+        <h2 class="form-signin-heading">Please, sign in</h2>
+        <label for="inputLogin" class="sr-only">Login</label>
+        <input ng-model="lc.user" type="text" id="inputLogin" class="form-control" placeholder="Login" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input ng-model="lc.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <button class="btn btn-md btn-primary" type="submit">Sign in</button>
+    </form>
+    <div ng-hide="lc.isHidden">
+        <div class="alert alert-danger">
+            <strong>Error!</strong> {{lc.notify}}
+        </div>
+    </div>
+</div>

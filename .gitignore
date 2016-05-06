@@ -1,0 +1,4 @@
+.idea
+app/build
+node_modules
+bower_components

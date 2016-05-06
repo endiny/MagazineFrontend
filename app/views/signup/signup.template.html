@@ -1,0 +1,28 @@
+<div class="container-fluid" style="max-width: 330px;">
+    <form ng-submit="sc.signUp()">
+        <h2>So, you have decided to sign up</h2>
+        <label for="login" class="sr-only">Login</label>
+        <input ng-model="sc.login" type="text" id="login" class="form-control" placeholder="Login" required autofocus>
+
+        <label for="password" class="sr-only">Password</label>
+        <input ng-model="sc.password1" type="password" id="password" class="form-control" placeholder="Password" required>
+
+        <label for="passwordConfirm" class="sr-only">And one more..</label>
+        <input ng-model="sc.password2" type="password" id="passwordConfirm" class="form-control" placeholder="And one more.." required>
+
+        <label for="name" class="sr-only">Your Name</label>
+        <input ng-model="sc.name" type="text" id="name" class="form-control" placeholder="Your Name" required>
+
+        <button class="btn btn-md btn-primary" type="submit">Sign in</button>
+    </form>
+    <div ng-hide="sc.isHiddenError">
+        <div class="alert alert-danger">
+            <strong>Error!</strong> {{sc.notify}}
+        </div>
+    </div>
+    <div ng-hide="sc.isHiddenSuccess">
+        <div class="alert alert-success">
+            <strong>Excellent!</strong> {{sc.notify}}
+        </div>
+    </div>
+</div>
