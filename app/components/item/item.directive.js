@@ -12,7 +12,7 @@ export default class item {
             },
             controller: 'ItemController',
             controllerAs: 'ic',
-            templateUrl: './views/mainPage/item.template.html',
+            templateUrl: './components/item/item.template.html',
             link: ($scope, cartProvider) => {}
         }
     }
