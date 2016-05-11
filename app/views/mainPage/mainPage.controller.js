@@ -4,16 +4,14 @@
 
 export default class mainPageController {
     constructor($scope, magazineProvider, cartProvider) {
-        var magazines = [];
         var amount = 0;
         var gotIt = (response) => {
             amount = response.data.amount;
-            magazines = response.data.magazines;
-            this.magazinesToShow = magazines;
+            this.magazinesToShow = response.data.magazines;
+            $scope.$parent.magazines = this.magazinesToShow;
         };
 
         var ohNo = (response) => {
-            //todo oh my god something must be here, or mustn't
         };
         magazineProvider.getMagazines(gotIt, ohNo);
         this.magazinesToShow = [];

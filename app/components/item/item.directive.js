@@ -3,7 +3,7 @@
  */
 
 export default class item {
-    constructor(cartProvider) {
+    constructor() {
         return {
             name: 'item',
             restrict: 'E',
@@ -13,7 +13,7 @@ export default class item {
             controller: 'ItemController',
             controllerAs: 'ic',
             templateUrl: './components/item/item.template.html',
-            link: ($scope, cartProvider) => {}
+            link: ($scope) => {}
         }
     }
 }

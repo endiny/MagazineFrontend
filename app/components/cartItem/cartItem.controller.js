@@ -4,11 +4,17 @@
 export default class CartItemController {
     constructor($scope, cartProvider, magazineProvider) {
         $scope.subscription;
+        $scope.months = $scope.subscription.months;
+        magazineProvider.getMagazineById($scope.subscription.id).then(gotIt, ohNo);
         $scope.name = '';
         $scope.price = 0.0;
-        $scope.months = $scope.subscription.months;
-        $scope.total = $scope.price*$scope.months;
-        magazineProvider.getMagazineById($scope.subscription.id).then(gotIt, ohNo);
+        $scope.total = $scope.price * $scope.months;
+
+        this.update = () => {
+            cartProvider.editInCart($scope.subscription.id, $scope.months);
+            $scope.total = $scope.months * $scope.price;
+        };
+
         this.gotIt = (response) => {
             $scope.name = response.data.name;
             $scope.price = response.data.price;

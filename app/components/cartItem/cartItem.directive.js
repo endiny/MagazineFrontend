@@ -12,7 +12,7 @@ export default class cartItem {
             },
             controller: 'CartItemController',
             controllerAs: 'cic',
-            templateUrl: './views/cart/cart_item.template.html',
+            templateUrl: './components/cartItem/cart_item.template.html',
             link: ($scope) => {}
         }
     }

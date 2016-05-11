@@ -3,7 +3,8 @@
  */
 import mainPageController from './views/mainPage/mainPage.controller.js';
 import loginController from './views/login/login.controller.js';
-import signUpController from './views/signup/signup.controller'
+import signUpController from './views/signup/signup.controller';
+import cartController from './views/cart/cart.controller';
 
 export default function mainRouter($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/login");
@@ -19,6 +20,12 @@ export default function mainRouter($stateProvider, $urlRouterProvider) {
             controller: ($scope, magazineProvider, cartProvider) =>
                 new mainPageController($scope, magazineProvider, cartProvider),
             controllerAs: 'mpc'
+        })
+        .state('cart', {
+            url: '/cart',
+            templateUrl: './views/cart/cart.template.html',
+            controller: ($scope, cartProvider) => new cartController($scope, cartProvider),
+            controllerAs: 'cc'
         })
         .state('login', {
             url: '/login',

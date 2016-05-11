@@ -4,6 +4,7 @@
 export default class cartProvider {
     constructor() {
         var order = new Map();
+        var order_array;
         this.addToCart = (mId, mMonths) => {
             if (order.has(mId)) {
                 mMonths += order.get(mId);
@@ -13,7 +14,7 @@ export default class cartProvider {
         this.removeFromCart = (mId) => {
             order.delete(mId);
         };
-        this.editMagazine = (mId, mMonths) => {
+        this.editInCart = (mId, mMonths) => {
             if (!order.has(mId)) {
                 return this.addToCart(mId, mMonths)
             }
@@ -22,7 +23,16 @@ export default class cartProvider {
 
         this.submitOrder = (callbackSuccess, callbackFail) => {
             return $http.post('http://localhost:9000/api/order/add', order).then(callbackSuccess, callbackFail);
-        }
+        };
 
+        this.getCart = () => {
+            order_array = [];
+            order.forEach(addMapEntryToArray);
+            return order_array;
+        };
+
+        var addMapEntryToArray = (value, key) => {
+            order_array.push({id:key, months:value});
+        }
     };
 }
