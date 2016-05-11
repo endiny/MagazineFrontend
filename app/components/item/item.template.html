@@ -1,12 +1,12 @@
 <div>
     <h3>{{name}}</h3><br>
     {{description}}<br>
-    Price: {{price}}
+    Price: {{price}} ₽
     <form ng-submit="addToCart()" class="form-inline" style="max-width: 300px">
         <div class="form-group">
             <div class="input-group">
                 <input ng-model="months" type="number" min="1" max="50" value="1" class="form-control" placeholder="Amount">
-                <div class="input-group-addon">items</div>
+                <div class="input-group-addon">months</div>
             </div>
         </div>
         <button type="submit" class="btn btn-primary btn-md">Add to cart</button>

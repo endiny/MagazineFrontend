@@ -6,6 +6,12 @@ export default class CartController {
         this.magazines = [];
         this.orderPrice = 0;
         this.order = cartProvider.getCart();
+        $scope.$watch(() => this.magazines, () => {
+            this.orderPrice = 0;
+            for (let i of this.magazines) {
+                this.orderPrice+=(i.months * i.price);
+            }
+        }, true);
 
         //господь всемогущий..
         this.getMagazine = (id) => {
@@ -14,11 +20,10 @@ export default class CartController {
             })
         };
 
-        this.order.forEach((el) => {
-            var magazine = this.getMagazine(el.id);
-            this.magazines.push({id:el.id, months:el.months, price:magazine.price, name:magazine.name});
-            this.orderPrice +=(this.magazines[length-1].months * this.magazines[length-1].price);
-        });
+        for (let item of this.order) {
+            var magazine = this.getMagazine(item.id);
+            this.magazines.push({id:item.id, months:item.months, price:magazine.price, name:magazine.name});
+        }
 
         this.submitOrder = () => {}
     }

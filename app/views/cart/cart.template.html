@@ -10,10 +10,10 @@
         </tr>
         <tr ng-repeat="i in cc.magazines">
             <td>{{i.name}}</td>
-            <td>{{i.price}}</td>
+            <td>{{i.price}}₽</td>
             <td><input ng-model="i.months" type="number" min="1" max="12"></td>
-            <td>{{i.months * i.price}}</td>
+            <td>{{i.months * i.price}}₽</td>
         </tr>
     </table>
-    <div style="text-align: right;"><h1>Total: {{cc.orderPrice}}</h1></div>
+    <div style="text-align: right;"><h1>Total: {{cc.orderPrice}}₽</h1></div>
 </div>
