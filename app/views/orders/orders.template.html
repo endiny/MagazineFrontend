@@ -1,0 +1,24 @@
+<div class="container">
+    <h2><b>Orders</b></h2>
+    <div ng-repeat="i in oc.orders">
+        <h3>Order #{{i.id}}</h3><br>
+        <b>Shipment address: </b>{{i.ship}}<br>
+        <b>Status: </b>{{(i.paid)?'paid':'unpaid'}}<br>
+        <b>Total: </b>{{i.sum}}₽<br>
+        <button ngDisabled="i.paid" class="btn btn-success btn-sm">{{(i.paid)?'Paid':'Pay'}}</button>
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Months</th>
+                <th>Total</th>
+            </tr>
+            <tr ng-repeat="j in i.subscriptions">
+                <td>{{oc.getMagazine(j.magazineId).name}}</td>
+                <td>{{oc.getMagazine(j.magazineId).price}}</td>
+                <td>{{j.months}}</td>
+                <td>{{oc.getMagazine(j.magazineId).price*j.months}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

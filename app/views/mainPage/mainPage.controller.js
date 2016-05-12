@@ -4,26 +4,19 @@
 
 export default class mainPageController {
     constructor($scope, magazineProvider, cartProvider) {
-        var amount = 0;
-        var gotIt = (response) => {
-            amount = response.data.amount;
-            this.magazinesToShow = response.data.magazines;
-            $scope.$parent.magazines = this.magazinesToShow;
+        let gotIt = (response) => {
+            $scope.$parent.magazines = response.data.magazines;
+            this.magazinesToShow = $scope.$parent.magazines;
         };
 
-        var ohNo = (response) => {
+        let ohNo = (response) => {
         };
-        magazineProvider.getMagazines(gotIt, ohNo);
-        this.magazinesToShow = [];
+        if (!$scope.$parent.magazines) {
+            magazineProvider.getMagazines(gotIt, ohNo);
+        }
+        this.magazinesToShow = $scope.$parent.magazines;
         this.addToCart = (id, months) => {
             cartProvider.addToCart(id, months);
         };
-        this.load = () => {
-            magazineProvider.getMagazines(gotIt, ohNo);
-        };
-
-        $scope.$on('getMagazines', () => {
-            magazineProvider.getMagazines(gotIt, ohNo);
-        });
     }
 }

@@ -17,5 +17,16 @@ angular.module('shopMagazine', ['ngCookies', 'ui.router', 'services', 'consts', 
         $httpProvider.defaults.withCredentials = true;
     })
     .config(mainRouter)
-    .controller('ApplicationController', ($scope, roles, authProvider) =>
-        new ApplicationController($scope, roles, authProvider));
+    .run((authProvider, magazineProvider, $rootScope) => {
+        let gotIt = (response) => {
+            $rootScope.magazines = response.data.magazines;
+        };
+
+        let ohNo = (response) => {
+        };
+        if (authProvider.restoreAuthentication()) {
+            magazineProvider.getMagazines(gotIt, ohNo);
+        }
+    })
+    .controller('ApplicationController', ($scope, authProvider, cartProvider) =>
+        new ApplicationController($scope, authProvider, cartProvider));

@@ -2,7 +2,7 @@
  * Created by endiny on 06/05/16.
  */
 export default class cartProvider {
-    constructor() {
+    constructor($http) {
         var order = new Map();
         var order_array;
         this.addToCart = (mId, mMonths) => {
@@ -21,8 +21,10 @@ export default class cartProvider {
             order.set(mId, mMonths);
         };
 
-        this.submitOrder = (callbackSuccess, callbackFail) => {
-            return $http.post('http://localhost:9000/api/order/add', order).then(callbackSuccess, callbackFail);
+        this.submitOrder = (shipAddress, callbackSuccess, callbackFail) => {
+            return $http.post('http://localhost:9000/api/orders/add',
+                JSON.stringify({address:shipAddress, order:this.getCart()}))
+                .then(callbackSuccess, callbackFail);
         };
 
         this.getCart = () => {
@@ -33,6 +35,10 @@ export default class cartProvider {
 
         var addMapEntryToArray = (value, key) => {
             order_array.push({id:key, months:value});
+        };
+        
+        this.dropCart = () => {
+            order = new Map();
         }
     };
 }
