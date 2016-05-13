@@ -95,6 +95,5 @@ export default function mainRouter($stateProvider, $urlRouterProvider) {
             resolve: {
                 authenticate: checkIfAdmin
             }
-            
         });
 };

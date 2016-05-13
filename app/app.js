@@ -8,11 +8,11 @@ import '../bower_components/angular-cookies/angular-cookies'
 import '../node_modules/angular-ui-router/release/angular-ui-router'
 import mainRouter from './MainRouter';
 import './services/factories.module.js';
-import './consts/consts.module'
+import './l10n/localizations.module'
 import './components/components.module'
 import ApplicationController from './controllers/application'
 
-angular.module('shopMagazine', ['ngCookies', 'ui.router', 'services', 'consts', 'components'])
+angular.module('shopMagazine', ['ngCookies', 'ui.router', 'services', 'localization', 'components'])
     .config(($httpProvider) => {
         $httpProvider.defaults.withCredentials = true;
     })
@@ -28,5 +28,5 @@ angular.module('shopMagazine', ['ngCookies', 'ui.router', 'services', 'consts', 
             magazineProvider.getMagazines(gotIt, ohNo);
         }
     })
-    .controller('ApplicationController', ($scope, authProvider, cartProvider) =>
-        new ApplicationController($scope, authProvider, cartProvider));
+    .controller('ApplicationController', ($scope, authProvider, cartProvider, l10nProvider) =>
+        new ApplicationController($scope, authProvider, cartProvider, l10nProvider));

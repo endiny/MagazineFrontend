@@ -3,17 +3,20 @@
  */
 
 export default class ApplicationController {
-    constructor($scope, authProvider, cartProvider) {
+    constructor($scope, authProvider, cartProvider, l10nProvider) {
         $scope.login = '';
         $scope.role = '';
         $scope.name = '';
         $scope.logged = false;
+        $scope.isAdmin = false;
+        $scope.lang = 'en_US';
 
         this.loginSuccess = (user) => {
             $scope.login = user.login;
             $scope.role = user.role;
             $scope.name = user.name;
             $scope.logged = true;
+            $scope.isAdmin = authProvider.getRole() === 'admin';
         };
 
         if (authProvider.getUser()) {

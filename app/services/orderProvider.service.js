@@ -7,5 +7,9 @@ export default class orderProvider {
         this.getOrders = (callbackSuccess, callbackFail) => {
             return $http.get('http://localhost:9000/api/orders').then(callbackSuccess, callbackFail);
         };
+
+        this.payForOrder = (id, callbackSuccess, callbackFail) => {
+            return $http.get('http://localhost:9000/api/orders/pay/'+id).then(callbackSuccess, callbackFail);
+        }
     }
 }

@@ -5,7 +5,7 @@
         <b>Shipment address: </b>{{i.ship}}<br>
         <b>Status: </b>{{(i.paid)?'paid':'unpaid'}}<br>
         <b>Total: </b>{{i.sum}}₽<br>
-        <button ngDisabled="i.paid" class="btn btn-success btn-sm">{{(i.paid)?'Paid':'Pay'}}</button>
+        <button ng-disabled="i.paid" ng-click="oc.pay(i.id)" class="btn btn-success btn-sm">{{(i.paid)?'Paid':'Pay'}}</button>
         <table class="table table-striped">
             <tr>
                 <th>Name</th>

@@ -4,7 +4,7 @@
 export default class orderController {
     constructor($scope, orderProvider) {
         this.orders = [];
-        let gotIt = (response) => {
+        let gotOrders = (response) => {
             this.orders = response.data.orders;
         };
         let ohNo = (response) => {};
@@ -13,6 +13,19 @@ export default class orderController {
                 return el.id === id;
             })
         };
-        orderProvider.getOrders(gotIt, ohNo);
+        orderProvider.getOrders(gotOrders, ohNo);
+
+        let orderPaid = (response) => {
+            this.orders.find((el) => {return el.id === response.data.id})
+                .paid = true;
+        };
+
+        let orderDidntPaid = (response) => {
+
+        };
+
+        this.pay = (id) => {
+            orderProvider.payForOrder(id, orderPaid, orderDidntPaid);
+        }
     };
 }
