@@ -10,6 +10,10 @@ export default class orderProvider {
 
         this.payForOrder = (id, callbackSuccess, callbackFail) => {
             return $http.get('http://localhost:9000/api/orders/pay/'+id).then(callbackSuccess, callbackFail);
+        };
+
+        this.revertOrder = (id, callbackSuccess, callbackFail) => {
+            return $http.get('http://localhost:9000/api/orders/delete/'+id).then(callbackSuccess, callbackFail);
         }
     }
 }

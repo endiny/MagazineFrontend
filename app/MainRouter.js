@@ -43,8 +43,8 @@ export default function mainRouter($stateProvider, $urlRouterProvider) {
         .state('mainPage', {
             url: '/main',
             templateUrl: './views/mainPage/mainPage.template.html',
-            controller: ($scope, magazineProvider, cartProvider) =>
-                new mainPageController($scope, magazineProvider, cartProvider),
+            controller: ($scope, magazineProvider, cartProvider, l10nProvider) =>
+                new mainPageController($scope, magazineProvider, cartProvider, l10nProvider),
             controllerAs: 'mpc',
             resolve: {
                 authenticate: checkLogin
@@ -53,7 +53,8 @@ export default function mainRouter($stateProvider, $urlRouterProvider) {
         .state('cart', {
             url: '/cart',
             templateUrl: './views/cart/cart.template.html',
-            controller: ($scope, cartProvider) => new cartController($scope, cartProvider),
+            controller: ($scope, cartProvider, l10nProvider) =>
+                new cartController($scope, cartProvider, l10nProvider),
             controllerAs: 'cc',
             resolve: {
                 authenticate: checkLogin
@@ -81,7 +82,7 @@ export default function mainRouter($stateProvider, $urlRouterProvider) {
         .state('orders', {
             url: '/orders',
             templateUrl: './views/orders/orders.template.html',
-            controller: ($scope, orderProvider) => new orderController($scope, orderProvider),
+            controller: ($scope, orderProvider, l10nProvider) => new orderController($scope, orderProvider, l10nProvider),
             controllerAs: 'oc',
             resolve: {
                 authenticate: checkLogin

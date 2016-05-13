@@ -2,13 +2,17 @@
  * Created by endiny on 06/05/16.
  */
 export default class CartController {
-    constructor($scope, cartProvider) {
+    constructor($scope, cartProvider, l10nProvider) {
         this.magazines = [];
         this.orderPrice = 0;
         this.order = cartProvider.getCart();
         this.hideOrderForm = true;
         this.address = '';
         this.orderIsEmpty = true;
+        this.bundle = l10nProvider.getBundle().cart;
+        $scope.$watch(() => l10nProvider.currentBundle, () => {
+            this.bundle = l10nProvider.currentBundle.cart;
+        });
         $scope.$watch(() => this.magazines, () => {
             this.orderPrice = 0;
             this.orderIsEmpty = this.magazines.length === 0;

@@ -9,7 +9,11 @@ export default class ApplicationController {
         $scope.name = '';
         $scope.logged = false;
         $scope.isAdmin = false;
-        $scope.lang = 'en_US';
+        $scope.bundle = l10nProvider.getBundle().topPanel;
+        $scope.setLanguage = (lang) => {
+            l10nProvider.setLanguage(lang);
+            $scope.bundle = l10nProvider.getBundle().topPanel;
+        };
 
         this.loginSuccess = (user) => {
             $scope.login = user.login;

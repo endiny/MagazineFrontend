@@ -6,7 +6,41 @@ const En_US = {
         magazines: 'Magazines',
         cart: 'Cart',
         orders: 'Orders',
-        admin: 'Admin'
+        admin: 'Admin',
+        profile: 'Profile',
+        settings: 'Settings',
+        language: 'Language',
+        logout: 'Logout'
+    },
+    mainPage: {
+        months: 'months',
+        add: 'Add to cart'
+    },
+    cart: {
+        title: 'Shopping cart',
+        name: 'Name',
+        price: 'Price',
+        months: 'Months',
+        total: 'Total',
+        createOrder: 'Create Order',
+        remove: 'Remove',
+        addressMessage: 'Ok, just one step to go!',
+        address: 'Address',
+        proceed: 'Proceed'
+    },
+    orders: {
+        title: 'Orders',
+        order: 'Order',
+        ship: 'Shipment address',
+        status: 'Status',
+        paid: 'Paid',
+        unpaid: 'Unpaid',
+        pay: 'Pay',
+        name: 'Name',
+        price: 'Price',
+        months: 'Months',
+        total: 'Total',
+        revert: 'Revert'
     }
 };
 

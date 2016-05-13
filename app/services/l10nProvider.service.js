@@ -8,8 +8,8 @@ export default class l10nProvider {
         this.currentLanguage = 'en_US';
         this.currentBundle = en_US;
         this.setLanguage = (lang) => {
-            if (lang === 'ru_RU') {
-                this.currentLanguage = lang;
+            if (lang === 'ru') {
+                this.currentLanguage = 'ru_RU';
                 this.currentBundle = ru_RU;
             } else {
                 this.currentLanguage = 'en_US';

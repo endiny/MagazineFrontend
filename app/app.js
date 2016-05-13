@@ -12,7 +12,7 @@ import './l10n/localizations.module'
 import './components/components.module'
 import ApplicationController from './controllers/application'
 
-angular.module('shopMagazine', ['ngCookies', 'ui.router', 'services', 'localization', 'components'])
+angular.module('shopMagazine', ['ngCookies', 'ui.router', 'services', 'localizations', 'components'])
     .config(($httpProvider) => {
         $httpProvider.defaults.withCredentials = true;
     })

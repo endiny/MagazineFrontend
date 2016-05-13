@@ -1,17 +1,22 @@
 <div class="container">
-    <h2><b>Orders</b></h2>
+    <h2><b>{{oc.bundle.title}}</b></h2>
     <div ng-repeat="i in oc.orders">
-        <h3>Order #{{i.id}}</h3><br>
-        <b>Shipment address: </b>{{i.ship}}<br>
-        <b>Status: </b>{{(i.paid)?'paid':'unpaid'}}<br>
-        <b>Total: </b>{{i.sum}}₽<br>
-        <button ng-disabled="i.paid" ng-click="oc.pay(i.id)" class="btn btn-success btn-sm">{{(i.paid)?'Paid':'Pay'}}</button>
+        <h3>{{oc.bundle.order}} #{{i.id}}</h3><br>
+        <b>{{oc.bundle.ship}}: </b>{{i.ship}}<br>
+        <b>{{oc.bundle.status}}: </b>{{(i.paid)?oc.bundle.paid:oc.bundle.unpaid}}<br>
+        <b>{{oc.bundle.total}}: </b>{{i.sum}}₽<br>
+        <button ng-disabled="i.paid" ng-click="oc.pay(i.id)" class="btn btn-success btn-sm">
+            {{(i.paid)?oc.bundle.paid:oc.bundle.pay}}
+        </button>
+        <button ng-hide="i.paid" ng-click="oc.revert(i.id)" class="btn btn-danger btn-sm">
+            {{oc.bundle.revert}}
+        </button>
         <table class="table table-striped">
             <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Months</th>
-                <th>Total</th>
+                <th>{{oc.bundle.name}}</th>
+                <th>{{oc.bundle.price}}</th>
+                <th>{{oc.bundle.months}}</th>
+                <th>{{oc.bundle.total}}</th>
             </tr>
             <tr ng-repeat="j in i.subscriptions">
                 <td>{{oc.getMagazine(j.magazineId).name}}</td>

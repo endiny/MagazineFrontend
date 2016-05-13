@@ -5,9 +5,9 @@
     <title>Title</title>
 </head>
 <script src="./build/bundle.js"></script>
-<link rel="stylesheet" href="./build/bootstrap.min.css">
-<script src="./build/jquery.min.js"></script>
-<script src="./build/bootstrap.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="./build/md5.min.js"></script>
 <body ng-app="shopMagazine">
 <header>
@@ -29,10 +29,10 @@
             <div ng-controller="ApplicationController" class="collapse navbar-collapse" id="js-navbar-collapse">
                 <div ng-hide="!logged">
                     <ul class="nav navbar-nav">
-                        <li><a ui-sref="mainPage">Magazines</a></li>
-                        <li><a ui-sref="cart">Cart</a></li>
-                        <li><a ui-sref="orders">Orders</a></li>
-                        <li><a ng-hide="!isAdmin" ui-sref="admin">Admin</a></li>
+                        <li><a ui-sref="mainPage">{{bundle.magazines}}</a></li>
+                        <li><a ui-sref="cart">{{bundle.cart}}</a></li>
+                        <li><a ui-sref="orders">{{bundle.orders}}</a></li>
+                        <li><a ng-hide="!isAdmin" ui-sref="admin">{{bundle.admin}}</a></li>
                     </ul>
                 </div>
                 <div ng-hide="logged">
@@ -49,12 +49,13 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="dropdown-header">Language</li>
-                                <li><a>Русский</a></li>
-                                <li><a>English</a></li>
-                                <li class="dropdown-header">Settings</li>
-                                <li><a>Profile</a></li>
-                                <li><button class="btn btn-sm btn-primary" ng-click="logout()">Logout</button></li>
+                                <li class="dropdown-header">{{bundle.language}}</li>
+                                <li><a href="" ng-click="setLanguage('ru')">Русский</a></li>
+                                <li><a href="" ng-click="setLanguage('en')">English</a></li>
+                                <li class="dropdown-header">{{bundle.settings}}</li>
+                                <li><a>{{bundle.profile}}</a></li>
+                                <!--<li><button class="btn btn-sm btn-primary" ng-click="logout()">{{bundle.logout}}</button></li>-->
+                                <li><a href="" ng-click="logout()">{{bundle.logout}}</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -3,7 +3,8 @@
  */
 
 export default class mainPageController {
-    constructor($scope, magazineProvider, cartProvider) {
+    constructor($scope, magazineProvider, cartProvider, l10nProvider) {
+        
         let gotIt = (response) => {
             $scope.$parent.magazines = response.data.magazines;
             this.magazinesToShow = $scope.$parent.magazines;

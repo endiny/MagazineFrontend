@@ -4,5 +4,5 @@
 import en_US from './en_US.const'
 import ru_RU from './ru_RU.const'
 angular.module('localizations', [])
-    .const('ru_RU', ru_RU)
-    .const('en_US', en_US);
+    .constant('ru_RU', ru_RU)
+    .constant('en_US', en_US);
