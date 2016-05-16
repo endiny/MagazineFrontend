@@ -9,7 +9,7 @@ export default class loginController {
         this.notify = '';
         this.isHidden = true;
 
-        var sendError = (text) => {
+        let sendError = (text) => {
             this.notify = text;
             this.isHidden = false;
         };

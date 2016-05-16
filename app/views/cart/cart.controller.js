@@ -9,6 +9,8 @@ export default class CartController {
         this.hideOrderForm = true;
         this.address = '';
         this.orderIsEmpty = true;
+        this.hideSuccess = true;
+        this.hideFail = true;
         this.bundle = l10nProvider.getBundle().cart;
         $scope.$watch(() => l10nProvider.currentBundle, () => {
             this.bundle = l10nProvider.currentBundle.cart;
@@ -35,6 +37,8 @@ export default class CartController {
             this.magazines.push({id:item.id, months:item.months, price:magazine.price, name:magazine.name});
         }
         this.submitOrder = () => {
+            this.hideSuccess = true;
+            this.hideFail = true;
             for (let i of this.magazines) {
                 cartProvider.editInCart(i.id, i.months);
             }
@@ -42,11 +46,12 @@ export default class CartController {
         };
 
         this.gotIt = () => {
-            console.log('yay');
+            this.hideSuccess = false;
+            cartProvider.dropCart();
         };
 
         this.ohNo = () => {
-            console.log('no');
+            this.hideFail = false;
         };
 
         this.removeFromCart = (id) => {

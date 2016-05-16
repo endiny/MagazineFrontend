@@ -34,7 +34,7 @@ export default class orderController {
         };
         let notReverted = () => {};
         this.revert = (id) => {
-            orderProvider.revertOrder(id,)
+            orderProvider.revertOrder(id, reverted, notReverted);
         }
     };
 }

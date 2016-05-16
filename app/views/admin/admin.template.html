@@ -1,3 +1,15 @@
 <div class="container">
-    <h1>Admin page</h1>
+    <button class="btn btn-md btn-primary" ng-click="adc.showCreateMagazine()">{{adc.bundle.createMag}}</button>
+    <div ng-hide="adc.isCreateMagazineHidden">
+        <form ng-submit="adc.addMagazine()">
+            <input type="text" ng-model="adc.newMagazine.name" placeholder="{{adc.bundle.magazineName}}" class="form-control" required autofocus><br>
+            <textarea ng-model="adc.newMagazine.description" placeholder="{{adc.bundle.magazineDesc}}" class="form-control" rows="5" required></textarea><br>
+            <input type="number" min="1" ng-model="adc.newMagazine.price" placeholder="{{adc.bundle.magazinePrice}}" class="form-control" required>
+            <button class="btn btn-md btn-primary" type="submit">{{adc.bundle.add}}</button>
+            <button class="btn btn-md btn-danger" type="reset">{{adc.bundle.reset}}</button>
+        </form>
+        <div class="alert" ng-hide="adc.isNotifyHidden" ng-class="adc.isDanger?'alert-danger':'alert-success'">
+            {{adc.notifyText}}
+        </div>
+    </div>
 </div>

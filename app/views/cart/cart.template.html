@@ -6,11 +6,22 @@
         </button>
     </div>
     <div ng-hide="cc.hideOrderForm">
-        <form ng-submit="cc.submitOrder()">
+        <form ng-submit="cc.submitOrder() && cc.orderIsEmpty">
             <h3>{{cc.bundle.addressMessage}}</h3><br>
-            <input style="max-width: 340px" class="form-control" ng-model="cc.address" id="adr" placeholder="{{cc.bundle.address}}" type="text" required autofocus>
+            <input style="max-width: 340px" class="form-control" ng-model="cc.address" id="adr"
+                   placeholder="{{cc.bundle.address}}" type="text" required autofocus>
             <button class="btn btn-primary btn-md" type="submit">{{cc.bundle.proceed}}</button>
         </form>
+        <div ng-hide="cc.hideFail">
+            <div class="alert alert-danger">
+                {{cc.bundle.orderFail}}
+            </div>
+        </div>
+        <div ng-hide="cc.hideSuccess">
+            <div class="alert alert-success">
+                {{cc.bundle.orderSuccess}}
+            </div>
+        </div>
     </div>
     <table class="table table-striped">
         <tr>
@@ -25,7 +36,9 @@
             <td>{{i.price}}₽</td>
             <td><input ng-model="i.months" type="number" min="1" max="12"></td>
             <td>{{i.months * i.price}}₽</td>
-            <td><button ng-click="cc.removeFromCart(i.id)" class="btn btn-sm btn-danger">{{cc.bundle.remove}}</button> </td>
+            <td>
+                <button ng-click="cc.removeFromCart(i.id)" class="btn btn-sm btn-danger">{{cc.bundle.remove}}</button>
+            </td>
         </tr>
     </table>
     <div style="text-align: right;"><h1>{{cc.bundle.total}}: {{cc.orderPrice}}₽</h1></div>

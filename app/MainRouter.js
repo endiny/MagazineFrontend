@@ -6,7 +6,8 @@ import loginController from './views/login/login.controller.js';
 import signUpController from './views/signup/signup.controller';
 import cartController from './views/cart/cart.controller';
 import orderController from './views/orders/orders.controller';
-import adminController from './views/admin/admin.controller'
+import adminController from './views/admin/admin.controller';
+import profileController from './views/profile/profile.controller';
 
 export default function mainRouter($stateProvider, $urlRouterProvider) {
     let checkLogin = ($q, authProvider, $state, $timeout) => {
@@ -38,7 +39,7 @@ export default function mainRouter($stateProvider, $urlRouterProvider) {
         return $q.reject();
     };
 
-    $urlRouterProvider.otherwise("main");
+    $urlRouterProvider.otherwise("login");
     $stateProvider
         .state('mainPage', {
             url: '/main',
@@ -70,6 +71,16 @@ export default function mainRouter($stateProvider, $urlRouterProvider) {
                 authenticate: checkNotLogin
             }
         })
+        .state('admin', {
+            url: '/admin',
+            templateUrl: './views/admin/admin.template.html',
+            controller: ($scope, magazineProvider, l10nProvider) =>
+                new adminController($scope, magazineProvider, l10nProvider),
+            controllerAs: 'adc',
+            resolve: {
+                authenticate: checkIfAdmin
+            }
+        })
         .state('signup', {
             url: '/signup',
             templateUrl: './views/signup/signup.template.html',
@@ -82,19 +93,21 @@ export default function mainRouter($stateProvider, $urlRouterProvider) {
         .state('orders', {
             url: '/orders',
             templateUrl: './views/orders/orders.template.html',
-            controller: ($scope, orderProvider, l10nProvider) => new orderController($scope, orderProvider, l10nProvider),
+            controller: ($scope, orderProvider, l10nProvider) => 
+                new orderController($scope, orderProvider, l10nProvider),
             controllerAs: 'oc',
             resolve: {
                 authenticate: checkLogin
             }
         })
-        .state('admin', {
-            url: '/admin',
-            templateUrl: './views/admin/admin.template.html',
-            controller: () => new adminController(),
-            controllerAs: 'ac',
+        .state('profile', {
+            url: '/profile',
+            templateUrl: './views/profile/profile.template.html',
+            controller: ($scope, authProvider, l10nProvider) => 
+                new profileController($scope, authProvider, l10nProvider),
+            controllerAs: 'pc',
             resolve: {
-                authenticate: checkIfAdmin
+                authenthicate: checkLogin
             }
         });
 };

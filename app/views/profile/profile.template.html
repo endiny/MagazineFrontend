@@ -1,0 +1,24 @@
+<div class="container">
+    <form style="max-width: 40%" ng-submit="pc.updateProfile()">
+        <h3>{{pc.name}} ({{pc.login}})</h3><br>
+        <label for="inputName" class="sr-only">{{pc.bundle.name}}</label>
+        <h4>{{pc.bundle.changeName}}</h4>
+        <input ng-model="pc.name" type="text" id="inputName" class="form-control" placeholder="{{pc.bundle.name}}" required autofocus>
+        <label for="inputPassword" class="sr-only">{{pc.bundle.password}}</label>
+        <h4>{{pc.bundle.changePassword}}</h4>
+        <input ng-model="pc.password" type="password" id="inputPassword" class="form-control" placeholder="{{pc.bundle.password}}">
+        <label for="inputPassword1" class="sr-only">{{pc.bundle.confirm}}</label>
+        <input ng-model="pc.password1" type="password" id="inputPassword1" class="form-control" placeholder="{{pc.bundle.confirm}}">
+        <button class="btn btn-md btn-primary" type="submit">{{pc.bundle.save}}</button>
+    </form>
+    <div ng-hide="pc.isHiddenError">
+        <div class="alert alert-danger">
+            <strong>{{pc.bundle.error}}</strong> {{pc.notify}}
+        </div>
+    </div>
+    <div ng-hide="pc.isHiddenSuccess">
+        <div class="alert alert-success">
+            <strong>{{pc.bundle.excellent}}</strong> {{pc.notify}}
+        </div>
+    </div>
+</div>

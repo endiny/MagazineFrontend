@@ -3,8 +3,8 @@
  */
 export default class authProvider {
     constructor($http, $cookies) {
-        var user = null;
-        this.getUser = () => {return user;}
+        let user = null;
+        this.getUser = () => {return user};
         this.setUser = (User) => {
             user = User;
             if (user) {
@@ -27,6 +27,7 @@ export default class authProvider {
         this.getLogin = () => {return user.login;};
         this.getRole = () => {return user.role;};
         this.getName = () => {return user.name;};
+        this.setName = (name) => {user.name = name}
 
         this.restoreAuthentication = () => {
             var object = $cookies.getObject('user');
@@ -42,6 +43,15 @@ export default class authProvider {
         this.signUp = (creds, signUpSuccess, signUpFail) => {
             creds.password = hex_md5(hex_md5(creds.password));
             return $http.post('http://localhost:9000/api/signup', creds).then(signUpSuccess, signUpFail);
+        };
+
+        this.updateUser = (creds, updateSuccess, updateFail) => {
+            if (creds.password) {
+                creds.password = hex_md5(hex_md5(creds.password));
+            } else {
+                creds.password = 'none';
+            }
+            return $http.post('http://localhost:9000/api/user/edit',creds).then(updateSuccess, updateFail);
         }
     };
 }
