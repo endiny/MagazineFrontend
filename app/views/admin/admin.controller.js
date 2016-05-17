@@ -9,6 +9,8 @@ export default class adminController {
         this.isNotifyHidden = true;
         this.isDanger = false;
         this.notifyText = '';
+        this.magazinesToShow = $scope.$parent.magazines;
+        $scope.$watch(() => $scope.$parent.magazines, () => {this.magazinesToShow = $scope.$parent.magazines});
 
         this.newMagazine = {
             name: '',
@@ -21,15 +23,17 @@ export default class adminController {
         this.magazineAdded = (response) => {
             this.isDanger = false;
             this.notifyText = this.bundle.magazineAdd;
+            this.isNotifyHidden = false;
+            $scope.$parent.magazines.unshift(response.data.magazine);
         };
         this.magazineNotAdded = (response) => {
             this.isDanger = true;
             this.notifyText = this.bundle.magazineAddError;
+            this.isNotifyHidden = false;
         };
         this.addMagazine = () => {
             this.notifyHidden = true;
             magazineProvider.addMagazine(this.newMagazine, this.magazineAdded, this.magazineNotAdded);
-        }
-
+        };
     }
 }

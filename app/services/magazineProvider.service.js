@@ -16,5 +16,14 @@ export default class magazineProvider {
             magazine.price = magazine.price.toString();
             return $http.post('http://localhost:9000/api/magazine/add', magazine).then(callbackSuccess, callbackFail);
         };
+
+        this.update = (magazine, callbackSuccess, callbackFail) => {
+            magazine.price = magazine.price.toString();
+            return $http.post('http://localhost:9000/api/magazine/edit', magazine).then(callbackSuccess, callbackFail);
+        };
+        
+        this.remove = (id, callbackSuccess, callbackFail) => {
+            return $http.get('http://localhost:9000/api/magazine/delete/'+id).then(callbackSuccess, callbackFail);
+        }
     }
 }

@@ -1,4 +1,5 @@
 <div class="container">
+    <h2><b>{{adc.bundle.title}}</b></h2>
     <button class="btn btn-md btn-primary" ng-click="adc.showCreateMagazine()">{{adc.bundle.createMag}}</button>
     <div ng-hide="adc.isCreateMagazineHidden">
         <form ng-submit="adc.addMagazine()">
@@ -11,5 +12,8 @@
         <div class="alert" ng-hide="adc.isNotifyHidden" ng-class="adc.isDanger?'alert-danger':'alert-success'">
             {{adc.notifyText}}
         </div>
+    </div>
+    <div ng-repeat="i in adc.magazinesToShow">
+        <admin-item magazine="i" magazines="adc.magazinesToShow" bundle="adc.bundle"></admin-item>
     </div>
 </div>

@@ -1,0 +1,22 @@
+<!--<h3>{{bundle.magazine}} #{{magazine.id}}</h3>-->
+<div ng-hide="!isEditHidden">
+    <h3>{{magazine.name}}</h3><br>
+    <h5>{{bundle.magazineDesc}}: </h5>{{magazine.description}}<br>
+    <h5>{{bundle.magazinePrice}}: </h5>{{magazine.price}}<br>
+</div>
+<div ng-hide="isEditHidden">
+    <form ng-submit="update()">
+        <input type="text" ng-model="magazine.name" placeholder="{{bundle.magazineName}}" class="form-control" required>
+        <textarea ng-model="magazine.description" placeholder="{{bundle.magazineDesc}}" class="form-control" rows="5"
+                  required></textarea>
+        <input type="number" min="1" ng-model="magazine.price" placeholder="{{bundle.magazinePrice}}" class="form-control" required>
+        <button class="btn btn-md btn-success" type="submit">{{bundle.save}}</button>
+        <button class="btn btn-md btn-warning" type="reset">{{bundle.reset}}</button>
+        <br><br>
+    </form>
+</div>
+<button class="btn btn-md btn-primary" ng-click="showEditDialog()">{{bundle.edit}}</button>
+<button class="btn btn-md btn-danger" ng-click="remove()">{{bundle.remove}}</button>
+<div ng-hide="isAlertHidden" ng-class="isAlertSuccess?'alert-success':'alert-danger'" class="alert">
+    {{notifyMessage}}
+</div>

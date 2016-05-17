@@ -67,8 +67,14 @@ const En_US = {
         magazineAddError: 'Sorry! Something has happened and the magazine hasn\'t been added',
         magazineRemove: 'Excelent! The magazine has been removed',
         magazineRemoveError: 'Sorry! It seems that magazine is already in use so unable to remove it',
+        magazineUpdate: 'Excellent! The magazine is updated',
+        magazineUpdateError: 'Sorry! Something went wrong and we couldn\'t update the magazine',
         add: 'Add',
-        reset: 'Reset'
+        reset: 'Reset',
+        magazine: 'Magazine',
+        edit: 'Edit',
+        remove: 'Remove',
+        save: 'Save'
     }
 };
 

@@ -16,7 +16,8 @@ export default class ApplicationController {
         };
 
         this.loginSuccess = (user) => {
-            $scope.$watch(() => authProvider.getName(), () => {$scope.name = authProvider.getName()});
+            $scope.$watch(() => authProvider.getName(), () => {
+                $scope.name = authProvider.getName()});
             $scope.login = user.login;
             $scope.role = user.role;
             $scope.name = user.name;

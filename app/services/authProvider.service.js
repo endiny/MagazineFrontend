@@ -24,10 +24,10 @@ export default class authProvider {
 
         this.logout = () => {$http.get('http://localhost:9000/api/logout');};
 
-        this.getLogin = () => {return user.login;};
-        this.getRole = () => {return user.role;};
-        this.getName = () => {return user.name;};
-        this.setName = (name) => {user.name = name}
+        this.getLogin = () => {return user?user.login:'';};
+        this.getRole = () => {return user?user.role:'';};
+        this.getName = () => {return user?user.name:'';};
+        this.setName = (name) => {user.name = name};
 
         this.restoreAuthentication = () => {
             var object = $cookies.getObject('user');
