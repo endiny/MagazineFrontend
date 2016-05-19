@@ -1,0 +1,31 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/app.js",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "babel": "^6.5.2",
+    "angular-ui-router": "^0.2.18",
+    "jshash": "^0.0.1",
+    "requirejs": "^2.2.0",
+    "webpack": "^1.13.0",
+    "babel-loader": "^6.2.4",
+    "babel-core": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/endiny/MagazineFrontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/endiny/MagazineFrontend/issues"
+  },
+  "homepage": "https://github.com/endiny/MagazineFrontend#readme"
+}
