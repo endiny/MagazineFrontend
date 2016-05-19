@@ -11,14 +11,15 @@ export default class authProvider {
                 $cookies.put('user', JSON.stringify(user));
             } else {
                 $cookies.remove('user');
+                $cookies.remove('lang');
             }
         };
 
         this.isAuthorized = () => {
-            return user!=null;
+            return $http.get('http://localhost:9000/api/alive');
         };
 
-        this.isUserinRole = (role) => {
+        this.isUserInRole = (role) => {
             return (!user)?false:(user.role===role);
         };
 
@@ -30,7 +31,7 @@ export default class authProvider {
         this.setName = (name) => {user.name = name};
 
         this.restoreAuthentication = () => {
-            var object = $cookies.getObject('user');
+            let object = $cookies.getObject('user');
             user = object?object:null;
             return object?true:false;
         };

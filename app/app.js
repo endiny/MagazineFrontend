@@ -24,9 +24,9 @@ angular.module('shopMagazine', ['ngCookies', 'ui.router', 'services', 'localizat
 
         let ohNo = (response) => {
         };
-        if (authProvider.restoreAuthentication()) {
+        authProvider.isAuthorized().then(() => {
             magazineProvider.getMagazines(gotIt, ohNo);
-        }
+        });
     })
     .controller('ApplicationController', ($scope, authProvider, cartProvider, l10nProvider) =>
         new ApplicationController($scope, authProvider, cartProvider, l10nProvider));

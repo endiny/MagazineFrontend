@@ -4,6 +4,7 @@
 
 export default class ApplicationController {
     constructor($scope, authProvider, cartProvider, l10nProvider) {
+
         $scope.login = '';
         $scope.role = '';
         $scope.name = '';
@@ -25,9 +26,10 @@ export default class ApplicationController {
             $scope.isAdmin = authProvider.getRole() === 'admin';
         };
 
-        if (authProvider.getUser()) {
+        authProvider.isAuthorized().then(() => {
+            authProvider.restoreAuthentication();
             this.loginSuccess(authProvider.getUser());
-        }
+        });
 
         $scope.$on('userLogged', (event, user) => {
             this.loginSuccess(user);
